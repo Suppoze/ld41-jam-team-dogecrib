@@ -1,18 +1,18 @@
 ﻿using System.Collections.Generic;
-using Assets.Core.Common;
 using UnityEngine;
 
-public class Inventory<T> : MonoBehaviour where T : ITransferable
+public class Inventory<T> : MonoBehaviour where T : Item
 {
     public GameObject InventoryCanvas;
     public int Capacity = 5;
 
-    private Stack<T> _inventoryStack;
     private InventoryUI _inventoryUi;
+    
+    public Stack<T> InventoryStack { get; private set; }
 
     private void Awake()
     {
-        _inventoryStack = new Stack<T>(Capacity);
+        InventoryStack = new Stack<T>(Capacity);
     }
 
     private void Start()
@@ -34,20 +34,20 @@ public class Inventory<T> : MonoBehaviour where T : ITransferable
     public T Pop()
     {
         _inventoryUi?.PopChild();
-        var element = _inventoryStack.Pop();
+        var element = InventoryStack.Pop();
         return element;
     }
 
     public void Push(T element)
     {
         _inventoryUi?.PushChild(element);
-        _inventoryStack.Push(element);
+        InventoryStack.Push(element);
     }
 
-    public int AvailableSpace => Capacity - _inventoryStack.Count;
-    public bool IsEmpty => _inventoryStack.Count == 0;
+    public int AvailableSpace => Capacity - InventoryStack.Count;
+    public bool IsEmpty => InventoryStack.Count == 0;
     public bool IsFull => AvailableSpace == 0;
 }
  
-public class Inventory : Inventory<ITransferable> { }
+public class Inventory : Inventory<Item> { }
 

@@ -1,13 +1,12 @@
-﻿using Assets.Core.Common;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PopListener : MonoBehaviour
 {
-    public delegate ITransferable OnPopDelegate();
+    public delegate Item OnPopDelegate();
 
-    public OnPopDelegate OnPopReceived { get; set; }
+    public OnPopDelegate OnPopReceived { private get; set; }
 
-    public ITransferable Pop()
+    public Item Pop()
     {
         return OnPopReceived.Invoke();
     }

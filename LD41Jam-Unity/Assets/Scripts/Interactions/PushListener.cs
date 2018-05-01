@@ -1,15 +1,13 @@
-﻿using Assets.Core.Common;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PushListener : MonoBehaviour
 {
-    public delegate bool OnPushDelegate(ITransferable inventoryStackElement);
+    public delegate bool OnPushDelegate(Item inventoryStackElement);
 
     public OnPushDelegate OnPushReceived { get; set; }
 
-    public bool Push(ITransferable inventoryStackElement)
+    public bool Push(Item inventoryStackElement)
     {
         return OnPushReceived != null && OnPushReceived.Invoke(inventoryStackElement);
     }
-
 }

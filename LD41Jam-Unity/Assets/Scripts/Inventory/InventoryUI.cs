@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Assets.Core.Common;
 using UnityEngine;
 
 public class InventoryUI : MonoBehaviour
@@ -21,7 +20,7 @@ public class InventoryUI : MonoBehaviour
         Destroy(listElement);
     }
 
-    public void PushChild(ITransferable inventoryItem)
+    public void PushChild(Item inventoryItem)
     {
         var newInventoryItem = Instantiate(InventoryUiListItem, transform);
         newInventoryItem.Initialize(inventoryItem);

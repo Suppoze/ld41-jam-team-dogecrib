@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Assets.Core.Common;
 
 namespace Assets.Core.Orders
 {
     public class Order
     {
-        public INamed Item { get; }
+        public Item Item { get; }
         public Action<long> OnRemainingMillisUpdated { get; set; }
 
         private readonly Action<bool, Order> _orderResultCallback;
@@ -16,7 +15,7 @@ namespace Assets.Core.Orders
         private Task _orderTask;
         private CancellationTokenSource _cancellationTokenSource;
 
-        public Order(INamed item, int timeLimitInSeconds, Action<bool, Order> orderResultCallback)
+        public Order(Item item, int timeLimitInSeconds, Action<bool, Order> orderResultCallback)
         {
             Item = item;
             _timeLimitInSeconds = timeLimitInSeconds;
@@ -37,6 +36,7 @@ namespace Assets.Core.Orders
                 await Task.Delay(1000);
                 OnRemainingMillisUpdated?.Invoke(CalculateRemainingMillis(_timeLimitInSeconds, second));
             }
+
             _orderResultCallback(false, this);
         }
 

@@ -1,4 +1,3 @@
-using Assets.Core.Common;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -15,12 +14,12 @@ public class PlayerController : MonoBehaviour
         _mover = GetComponent<Mover>();
     }
 
-    public ITransferable PopFromPlayer()
+    public Item PopFromPlayer()
     {
         return _inventory.Pop();
     }
 
-    public void PushToPlayer(ITransferable inventoryElement)
+    public void PushToPlayer(Item inventoryElement)
     {
         _inventory.Push(inventoryElement);
     }
