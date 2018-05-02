@@ -1,11 +1,14 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 [RequireComponent(typeof(InRangeListener))]
 [RequireComponent(typeof(PushListener))]
 [RequireComponent(typeof(PopListener))]
 [RequireComponent(typeof(Inventory))]
 public class StorageStation : Station
-{    
+{
+    public List<Item> DebugItems = new List<Item>();
+    
     private InRangeListener _inRangeListener;
     private PushListener _pushListener;
     private PopListener _popListener;
@@ -28,6 +31,8 @@ public class StorageStation : Station
         _popListener.OnPopReceived = OnPopReceived;
         _inRangeListener.OnNotifyInRange = OnNotifyInRange;
         _inRangeListener.OnNotifyOutOfRange = OnNotifyOutOfRange;
+        
+        DebugItems.ForEach(item => _inventory.Push(item));
     }
 
     private bool OnPushReceived(Item item)

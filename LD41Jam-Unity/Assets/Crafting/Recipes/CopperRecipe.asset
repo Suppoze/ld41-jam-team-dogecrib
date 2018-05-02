@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Name: CopperRecipe
   m_EditorClassIdentifier: 
   RequiredItems:
-  - Item: {fileID: 11400000, guid: 80e41d53a4a36154cbd04927de3cc11b, type: 2}
-    RequiredCount: 1
+  - {fileID: 11400000, guid: 80e41d53a4a36154cbd04927de3cc11b, type: 2}
   Output: {fileID: 11400000, guid: b4459167a635cc540b91efb4aa0bd740, type: 2}

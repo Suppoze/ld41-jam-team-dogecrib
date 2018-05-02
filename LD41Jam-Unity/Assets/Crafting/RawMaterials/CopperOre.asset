@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8c8216712ce4a4f958448bc6174d7f1, type: 3}
   m_Name: CopperOre
   m_EditorClassIdentifier: 
-  ItemName: Copper Ore
+  Name: Copper Ore
   Artwork: {fileID: 0}

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Core.Extensions;
 using UnityEngine;
 
 public class InventoryUI : MonoBehaviour
@@ -6,11 +7,11 @@ public class InventoryUI : MonoBehaviour
     public InventoryUIListItem InventoryUiListItem;
     public bool HideByDefault;
 
-    private Stack<GameObject> _children;
+    private List<GameObject> _children;
 
     private void Awake()
     {
-        _children = new Stack<GameObject>();
+        _children = new List<GameObject>();
         if (HideByDefault) Hide();
     }
 
@@ -27,6 +28,12 @@ public class InventoryUI : MonoBehaviour
         _children.Push(newInventoryItem.gameObject);
     }
 
+    public void RemoveExact(int childIndex)
+    {
+        var listElement = _children[childIndex];
+        Destroy(listElement);
+    }
+
     public void Show()
     {
         transform.parent.gameObject.SetActive(true);
@@ -36,5 +43,4 @@ public class InventoryUI : MonoBehaviour
     {
         transform.parent.gameObject.SetActive(false);
     }
-
 }

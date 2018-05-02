@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Name: WoolClothRecipe
   m_EditorClassIdentifier: 
   RequiredItems:
-  - Item: {fileID: 11400000, guid: d5293da56843cf741a35f16a0f061c1f, type: 2}
-    RequiredCount: 1
+  - {fileID: 11400000, guid: d5293da56843cf741a35f16a0f061c1f, type: 2}
   Output: {fileID: 11400000, guid: fe965ebd0eecb164a906554af181f270, type: 2}

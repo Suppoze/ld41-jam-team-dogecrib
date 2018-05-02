@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd33a3ed65ae4beb9aea0f84a587507d, type: 3}
   m_Name: WoodenShield
   m_EditorClassIdentifier: 
-  ItemName: Wooden Shield
+  Name: Wooden Shield
   Artwork: {fileID: 0}
   Slot: 6

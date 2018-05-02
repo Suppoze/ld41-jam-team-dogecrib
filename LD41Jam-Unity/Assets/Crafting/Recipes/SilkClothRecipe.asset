@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Name: SilkClothRecipe
   m_EditorClassIdentifier: 
   RequiredItems:
-  - Item: {fileID: 11400000, guid: 133d2b7e333cac644baba5c8d184824a, type: 2}
-    RequiredCount: 1
+  - {fileID: 11400000, guid: 133d2b7e333cac644baba5c8d184824a, type: 2}
   Output: {fileID: 11400000, guid: d21b2ce22d9559748bb563fdba60401d, type: 2}

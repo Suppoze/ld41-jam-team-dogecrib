@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Name: PlankRecipe
   m_EditorClassIdentifier: 
   RequiredItems:
-  - Item: {fileID: 11400000, guid: c26e0b90db9b14b42a92ec69e00585f8, type: 2}
-    RequiredCount: 1
+  - {fileID: 11400000, guid: c26e0b90db9b14b42a92ec69e00585f8, type: 2}
   Output: {fileID: 11400000, guid: 09df741cf5a8c2442b95d7c5c4d7c47a, type: 2}

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Core.Extensions;
 using UnityEngine;
 
 public class Inventory<T> : MonoBehaviour where T : Item
@@ -7,12 +8,12 @@ public class Inventory<T> : MonoBehaviour where T : Item
     public int Capacity = 5;
 
     private InventoryUI _inventoryUi;
-    
-    public Stack<T> InventoryStack { get; private set; }
+
+    public List<T> Contents { get; private set; }
 
     private void Awake()
     {
-        InventoryStack = new Stack<T>(Capacity);
+        Contents = new List<T>();
     }
 
     private void Start()
@@ -33,21 +34,44 @@ public class Inventory<T> : MonoBehaviour where T : Item
 
     public T Pop()
     {
-        _inventoryUi?.PopChild();
-        var element = InventoryStack.Pop();
-        return element;
+        _inventoryUi.PopChild();
+        var popped = Contents.Pop();
+        return popped;
     }
 
     public void Push(T element)
     {
-        _inventoryUi?.PushChild(element);
-        InventoryStack.Push(element);
+        _inventoryUi.PushChild(element);
+        Contents.Push(element);
     }
 
-    public int AvailableSpace => Capacity - InventoryStack.Count;
-    public bool IsEmpty => InventoryStack.Count == 0;
+    public void CreateMatchingListWith(List<Item> invItemsCopy)
+    {
+        var contentsIndex = 0;
+        while (contentsIndex < Contents.Count)
+        {
+            if (contentsIndex == invItemsCopy.Count
+                || Contents[contentsIndex].Name != invItemsCopy[contentsIndex].Name)
+            {
+                RemoveExact(contentsIndex);
+                continue;
+            }
+
+            contentsIndex++;
+        }
+    }
+
+    private void RemoveExact(int contentsIndex)
+    {
+        Contents.RemoveAt(contentsIndex);
+        _inventoryUi.RemoveExact(contentsIndex);
+    }
+
+    public int AvailableSpace => Capacity - Contents.Count;
+    public bool IsEmpty => Contents.Count == 0;
     public bool IsFull => AvailableSpace == 0;
 }
- 
-public class Inventory : Inventory<Item> { }
 
+public class Inventory : Inventory<Item>
+{
+}

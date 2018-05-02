@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd33a3ed65ae4beb9aea0f84a587507d, type: 3}
   m_Name: WoodenGloves
   m_EditorClassIdentifier: 
-  ItemName: Wooden Gloves
+  Name: Wooden Gloves
   Artwork: {fileID: 0}
   Slot: 2

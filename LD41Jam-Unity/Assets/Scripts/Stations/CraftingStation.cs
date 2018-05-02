@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Inventory))]
 [RequireComponent(typeof(InRangeListener))]
@@ -8,7 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(UseListener))]
 public class CraftingStation : Station
 {
-    /*public Processor Processor;
+    public Processor Processor;
 
     private Inventory _inventory;
     private InRangeListener _inRangeListener;
@@ -16,71 +15,56 @@ public class CraftingStation : Station
     private PopListener _popListener;
     private UseListener _useListener;
 
-    private bool _processing;
-
     private void Awake()
     {
         _inventory = GetComponent<Inventory>();
         _inRangeListener = GetComponent<InRangeListener>();
         _pushListener = GetComponent<PushListener>();
         _popListener = GetComponent<PopListener>();
-        _useListener = GetComponent <UseListener>();
+        _useListener = GetComponent<UseListener>();
     }
 
     private void Start()
     {
+        _inRangeListener.OnNotifyInRange = playerIndex => _inventory.Open();
+        _inRangeListener.OnNotifyOutOfRange = playerIndex => _inventory.Close();
         _pushListener.OnPushReceived = PutDown;
         _popListener.OnPopReceived = PickUp;
         _useListener.OnUse = BeginProcessing;
     }
 
-    private bool CanProcess()
+    private Recipe FindRecipe()
     {
-        return Processor.CanProcess(_inventory.InventoryStack);
+        return Processor.FindProcessableRecipe(_inventory.Contents);
     }
 
-    private Item Process()
+    private void Process()
     {
-        if (!CanProcess()) return null;
+        var recipeToCraft = FindRecipe(); // TODO duplicate check
+        if (recipeToCraft == null) return;
 
-        return Processor.Process(_inventory.InventoryStack);
+        Processor.Process(_inventory, recipeToCraft);
     }
 
     private bool PutDown(Item item)
     {
-        Debug.Log("Put down element");
         if (_inventory.IsFull) return false;
-        
+
         _inventory.Push(item);
-        
+
         return true;
     }
 
     private Item PickUp()
     {
-        Debug.Log("Pick up element");
-        if (_inventory.IsEmpty) return null;
-
-        if (_processing) StopCoroutine(ProcessMaterial());
-        
-        return _inventory.Pop();
+        return _inventory.Pop(); // If empty, error is thrown.
     }
 
     private bool BeginProcessing()
     {
-        if (!CanProcess()) return false;
-        
-        StartCoroutine(ProcessMaterial());
+        if (!FindRecipe()) return false; // TODO duplicate check
+
+        Process();
         return true;
     }
-
-    IEnumerator ProcessMaterial()
-    {
-        _processing = true;
-        yield return new WaitForSeconds(3f);
-        ITransferable element = _inventory.Pop();
-        UnityEngine.Material material = element as UnityEngine.Material;
-        UnityEngine.Material processedMaterial = Process(material);
-        _inventory.Push(processedMaterial);
-    }*/
 }

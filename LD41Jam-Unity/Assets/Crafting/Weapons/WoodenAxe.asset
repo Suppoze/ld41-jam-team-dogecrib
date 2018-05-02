@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d33bbcb87d540de990d8fc8fc180515, type: 3}
   m_Name: WoodenAxe
   m_EditorClassIdentifier: 
-  ItemName: Wooden Axe
+  Name: Wooden Axe
   Artwork: {fileID: 0}
   Slot: 5
