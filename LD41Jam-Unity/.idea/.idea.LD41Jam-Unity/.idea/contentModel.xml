@@ -16,11 +16,22 @@
             <e p="OrderGenerator.cs" t="Include" />
           </e>
         </e>
+        <e p="packages" t="Include">
+          <e p="OutlineEffect" t="Include">
+            <e p="LinkedSet.cs" t="Include" />
+            <e p="Outline.cs" t="Include" />
+            <e p="OutlineEffect.cs" t="Include" />
+            <e p="Resources" t="Include">
+              <e p="OutlineBufferShader.shader" t="Include" />
+              <e p="OutlineShader.shader" t="Include" />
+            </e>
+          </e>
+        </e>
         <e p="ScriptableObjects" t="Include">
           <e p="Armor.cs" t="Include" />
+          <e p="CraftingMaterial.cs" t="Include" />
           <e p="Equipment.cs" t="Include" />
           <e p="Item.cs" t="Include" />
-          <e p="Material.cs" t="Include" />
           <e p="Processor.cs" t="Include" />
           <e p="Recipe.cs" t="Include" />
           <e p="Weapon.cs" t="Include" />
@@ -55,6 +66,7 @@
           <e p="Room.cs" t="Include" />
           <e p="Stations" t="Include">
             <e p="AssemblerStation.cs" t="Include" />
+            <e p="CraftingStation.cs" t="Include" />
             <e p="ProcessorStation.cs" t="Include" />
             <e p="Station.cs" t="Include" />
             <e p="StorageStation.cs" t="Include" />
