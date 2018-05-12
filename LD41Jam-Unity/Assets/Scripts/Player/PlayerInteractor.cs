@@ -1,58 +1,48 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Core.Interaction;
 using UnityEngine;
 
+[RequireComponent(typeof(LineRenderer))]
 public class PlayerInteractor : MonoBehaviour
 {
     public PlayerController Player;
 
-    private List<GameObject> _inRange;
-    private GameObject _active;
+    private LineRenderer _lineRenderer;
+    private ISet<GameObject> _inRange;
+    private InRangeListener _active;
 
     private void Awake()
     {
-        _inRange = new List<GameObject>();
+        _lineRenderer = GetComponent<LineRenderer>();
+        _inRange = new HashSet<GameObject>();
     }
 
-    private void FixedUpdate()
+    private void Start()
     {
-        if (_inRange.Count == 0)
-        {
-            if (_active == null) return;
-
-            _active.GetComponent<InRangeListener>().NotifyOutOfRange(Player.PlayerIndex);
-            _active = null;
-
-            return;
-        }
-
-        if (_inRange.Count == 1)
-        {
-            _active = _inRange.Single();
-            SwitchClosestInteractableTo(_active);
-            return;
-        }
-
-        _active = GetClosestInteractable(_inRange, transform);
-        SwitchClosestInteractableTo(_active);
+        _lineRenderer.enabled = false;
+        _lineRenderer.startColor = _lineRenderer.endColor = Player.GetComponent<SpriteRenderer>().color;
     }
 
-    private void OnTriggerEnter2D(Collider2D collider)
+    private void Update()
     {
-        var other = collider.gameObject;
+        UpdateActiveInteractable();
+    }
+
+    private void OnTriggerEnter2D(Collider2D otherCollider)
+    {
+        var other = otherCollider.gameObject;
         if (other.layer == LayerMask.NameToLayer("Interactable"))
         {
             _inRange.Add(other);
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collider)
+    private void OnTriggerExit2D(Collider2D otherCollider)
     {
-        var other = collider.gameObject;
+        var other = otherCollider.gameObject;
         if (other.layer == LayerMask.NameToLayer("Interactable"))
         {
-            var interactable = other.GetComponent<InRangeListener>();
-            interactable.NotifyOutOfRange(Player.PlayerIndex);
             _inRange.Remove(other);
         }
     }
@@ -60,13 +50,31 @@ public class PlayerInteractor : MonoBehaviour
     public void PushToActiveInteractable()
     {
         if (_active == null) return;
-        _active.GetComponent<PushListener>().Push(Player.PopFromPlayer());
+        new TransferCommand(
+                Player.Inventory,
+                _active.gameObject.GetComponent<Inventory>())
+            .WithFailureCallback(PushFailure)
+            .Execute();
+    }
+
+    private void PushFailure()
+    {
+        throw new System.NotImplementedException();
     }
 
     public void PopFromActiveInteractable()
     {
         if (_active == null) return;
-        Player.PushToPlayer(_active.GetComponent<PopListener>().Pop());
+        new TransferCommand(
+            _active.gameObject.GetComponent<Inventory>(),
+            Player.Inventory)
+            .WithFailureCallback(PopFailure)
+            .Execute();
+    }
+
+    private void PopFailure()
+    {
+        throw new System.NotImplementedException();
     }
 
     public void UseActiveInteractable()
@@ -75,15 +83,24 @@ public class PlayerInteractor : MonoBehaviour
         _active.GetComponent<UseListener>().Use();
     }
 
-    private void SwitchClosestInteractableTo(GameObject reachableObject)
+    private void UpdateActiveInteractable()
     {
-        if (_active != null)
+        var closest = GetClosestInteractable(_inRange, transform);
+
+        if (closest != null)
         {
-            _active.GetComponent<InRangeListener>().NotifyOutOfRange(Player.PlayerIndex);
+            _active = closest.GetComponent<InRangeListener>();
+            _lineRenderer.SetPosition(0, transform.position);
+            _lineRenderer.SetPosition(1, closest.transform.position);
+            _lineRenderer.enabled = true;
+        }
+        else
+        {
+            _active = null;
+            _lineRenderer.enabled = false;
         }
 
-        reachableObject.GetComponent<InRangeListener>().NotifyInRange(Player.PlayerIndex);
-        _active = reachableObject;
+        InteractionController.Instance.NotifyActiveChanged(this, _active);
     }
 
     private static GameObject GetClosestInteractable(IEnumerable<GameObject> enemies, Transform fromThis)

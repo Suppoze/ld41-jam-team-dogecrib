@@ -5,23 +5,14 @@ public class PlayerController : MonoBehaviour
     public PlayerInteractor Interactor;
     public int PlayerIndex;
 
-    private Inventory _inventory;
     private Mover _mover;
+
+    public Inventory Inventory { get; set; }
 
     private void Awake()
     {
-        _inventory = GetComponent<Inventory>();
+        Inventory = GetComponent<Inventory>();
         _mover = GetComponent<Mover>();
-    }
-
-    public Item PopFromPlayer()
-    {
-        return _inventory.Pop();
-    }
-
-    public void PushToPlayer(Item inventoryElement)
-    {
-        _inventory.Push(inventoryElement);
     }
 
     private void FixedUpdate()

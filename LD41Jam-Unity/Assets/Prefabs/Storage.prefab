@@ -25,8 +25,6 @@ GameObject:
   - component: {fileID: 114205291445288784}
   - component: {fileID: 114694610700827684}
   - component: {fileID: 114685925012863132}
-  - component: {fileID: 114780127818897654}
-  - component: {fileID: 114576578182776276}
   m_Layer: 10
   m_Name: Storage
   m_TagString: Untagged
@@ -87,17 +85,6 @@ MonoBehaviour:
   eraseRenderer: 0
   originalLayer: 0
   originalMaterials: []
---- !u!114 &114576578182776276
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1930694831571056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d32078f4101496c4aa91fcd76ec3eb58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114587705064321354
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -135,17 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Storage
---- !u!114 &114780127818897654
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1930694831571056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a0fa4bc86919824187797f584673391, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  DebugItems: []
 --- !u!212 &212988072394744742
 SpriteRenderer:
   m_ObjectHideFlags: 1

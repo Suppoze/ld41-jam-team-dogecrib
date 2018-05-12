@@ -1,0 +1,454 @@
+Index: Assets/ScriptableObjects/WeaponScriptable.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Assets/ScriptableObjects/WeaponScriptable.cs	(date 1525194014490)
++++ Assets/ScriptableObjects/WeaponScriptable.cs	(date 1525194014490)
+@@ -0,0 +1,6 @@
++using UnityEngine;
++
++[CreateAssetMenu(fileName = "Weapon", menuName = "Equipment/Weapon")]
++public class WeaponScriptable : EquipmentScriptable
++{
++}
+\ No newline at end of file
+Index: Assets/ScriptableObjects/WeaponScriptable.cs.meta
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Assets/ScriptableObjects/WeaponScriptable.cs.meta	(date 1525193713769)
++++ Assets/ScriptableObjects/WeaponScriptable.cs.meta	(date 1525193713769)
+@@ -0,0 +1,3 @@
++fileFormatVersion: 2
++guid: 9d33bbcb87d540de990d8fc8fc180515
++timeCreated: 1525193713
+\ No newline at end of file
+Index: Assets/ScriptableObjects/MaterialScriptable.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Assets/ScriptableObjects/MaterialScriptable.cs	(date 1525194008692)
++++ Assets/ScriptableObjects/MaterialScriptable.cs	(date 1525194008692)
+@@ -0,0 +1,6 @@
++using UnityEngine;
++
++[CreateAssetMenu(fileName = "Material", menuName = "Items/Material")]
++public class MaterialScriptable : Item
++{
++}
+\ No newline at end of file
+Index: Assets/ScriptableObjects/MaterialScriptable.cs.meta
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Assets/ScriptableObjects/MaterialScriptable.cs.meta	(date 1525193822597)
++++ Assets/ScriptableObjects/MaterialScriptable.cs.meta	(date 1525193822597)
+@@ -0,0 +1,3 @@
++fileFormatVersion: 2
++guid: f8c8216712ce4a4f958448bc6174d7f1
++timeCreated: 1525193822
+\ No newline at end of file
+Index: Assets/ScriptableObjects/RecipeScriptable.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Assets/ScriptableObjects/RecipeScriptable.cs	(date 1525193910823)
++++ Assets/ScriptableObjects/RecipeScriptable.cs	(date 1525193910823)
+@@ -0,0 +1,11 @@
++
++using System.Collections.Generic;
++using UnityEngine;
++
++[CreateAssetMenu(fileName = "Recipe", menuName = "Recipe")]
++public class RecipeScriptable : ScriptableObject
++{
++    public List<Item> Input;
++
++    public Item Output;
++}
+Index: Assets/Scripts/Interactions/PopListener.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>using Assets.Core.Common;\nusing UnityEngine;\n\npublic class PopListener : MonoBehaviour\n{\n    public delegate ITransferable OnPopDelegate();\n\n    public OnPopDelegate OnPopReceived { get; set; }\n\n    public ITransferable Pop()\n    {\n        return OnPopReceived.Invoke();\n    }\n\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Assets/Scripts/Interactions/PopListener.cs	(revision d28e531d1e441d2d44ec437953920e9b001fb9c6)
++++ Assets/Scripts/Interactions/PopListener.cs	(date 1525192074284)
+@@ -5,7 +5,7 @@
+ {
+     public delegate ITransferable OnPopDelegate();
+ 
+-    public OnPopDelegate OnPopReceived { get; set; }
++    public OnPopDelegate OnPopReceived { private get; set; }
+ 
+     public ITransferable Pop()
+     {
+Index: Assets/ScriptableObjects/RecipeScriptable.cs.meta
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Assets/ScriptableObjects/RecipeScriptable.cs.meta	(date 1525193093473)
++++ Assets/ScriptableObjects/RecipeScriptable.cs.meta	(date 1525193093473)
+@@ -0,0 +1,3 @@
++fileFormatVersion: 2
++guid: 595bf5132eec44e6abd46e71aa71b7e4
++timeCreated: 1525193093
+\ No newline at end of file
+Index: Assets/Crafting.meta
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Assets/Crafting.meta	(date 1525193608612)
++++ Assets/Crafting.meta	(date 1525193608612)
+@@ -0,0 +1,8 @@
++fileFormatVersion: 2
++guid: 539e136d500af124b869bdeb295a2015
++folderAsset: yes
++DefaultImporter:
++  externalObjects: {}
++  userData: 
++  assetBundleName: 
++  assetBundleVariant: 
+Index: Assets/Crafting/Wool.asset.meta
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Assets/Crafting/Wool.asset.meta	(date 1525194078382)
++++ Assets/Crafting/Wool.asset.meta	(date 1525194078382)
+@@ -0,0 +1,8 @@
++fileFormatVersion: 2
++guid: d5293da56843cf741a35f16a0f061c1f
++NativeFormatImporter:
++  externalObjects: {}
++  mainObjectFileID: 11400000
++  userData: 
++  assetBundleName: 
++  assetBundleVariant: 
+Index: .idea/.idea.LD41Jam-Unity/.idea/contentModel.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ContentModelStore\">\n    <e p=\"C:\\_develop\\LD41Jam\\LD41Jam-Unity\" t=\"IncludeRecursive\">\n      <e p=\"Assembly-CSharp.csproj\" t=\"IncludeRecursive\" />\n      <e p=\"Assets\" t=\"Include\">\n        <e p=\"Core\" t=\"Include\">\n          <e p=\"Assemblers\" t=\"Include\">\n            <e p=\"Assembler.cs\" t=\"Include\" />\n          </e>\n          <e p=\"Common\" t=\"Include\">\n            <e p=\"INamed.cs\" t=\"Include\" />\n            <e p=\"ITransferable.cs\" t=\"Include\" />\n          </e>\n          <e p=\"Injector.cs\" t=\"Include\" />\n          <e p=\"Items\" t=\"Include\">\n            <e p=\"Armor.cs\" t=\"Include\" />\n            <e p=\"Equipment.cs\" t=\"Include\" />\n            <e p=\"Weapon.cs\" t=\"Include\" />\n          </e>\n          <e p=\"Materials\" t=\"Include\">\n            <e p=\"Copper.cs\" t=\"Include\" />\n            <e p=\"Material.cs\" t=\"Include\" />\n            <e p=\"Silk.cs\" t=\"Include\" />\n            <e p=\"Wood.cs\" t=\"Include\" />\n            <e p=\"Wool.cs\" t=\"Include\" />\n          </e>\n          <e p=\"Orders\" t=\"Include\">\n            <e p=\"Order.cs\" t=\"Include\" />\n            <e p=\"OrderGenerator.cs\" t=\"Include\" />\n          </e>\n          <e p=\"Processors\" t=\"Include\">\n            <e p=\"CarpenterTable.cs\" t=\"Include\" />\n            <e p=\"Forge.cs\" t=\"Include\" />\n            <e p=\"Loom.cs\" t=\"Include\" />\n            <e p=\"Processor.cs\" t=\"Include\" />\n            <e p=\"ProcessorStation.cs\" t=\"Include\" />\n          </e>\n          <e p=\"Recipes\" t=\"Include\">\n            <e p=\"AxeRecipe.cs\" t=\"Include\" />\n            <e p=\"Recipe.cs\" t=\"Include\" />\n            <e p=\"RecipeManager.cs\" t=\"Include\" />\n          </e>\n        </e>\n        <e p=\"Scripts\" t=\"Include\">\n          <e p=\"Camera\" t=\"Include\">\n            <e p=\"CameraController.cs\" t=\"Include\" />\n            <e p=\"PixelPerfect.cs\" t=\"Include\" />\n          </e>\n          <e p=\"GameController.cs\" t=\"Include\" />\n          <e p=\"Interactions\" t=\"Include\">\n            <e p=\"InRangeListener.cs\" t=\"Include\" />\n            <e p=\"PopListener.cs\" t=\"Include\" />\n            <e p=\"PushListener.cs\" t=\"Include\" />\n            <e p=\"UseListener.cs\" t=\"Include\" />\n          </e>\n          <e p=\"Inventory\" t=\"Include\">\n            <e p=\"Inventory.cs\" t=\"Include\" />\n            <e p=\"InventoryUI.cs\" t=\"Include\" />\n            <e p=\"InventoryUIListItem.cs\" t=\"Include\" />\n            <e p=\"MaterialInventory.cs\" t=\"Include\" />\n          </e>\n          <e p=\"Orders\" t=\"Include\">\n            <e p=\"OrderCardUI.cs\" t=\"Include\" />\n            <e p=\"OrderContainerUI.cs\" t=\"Include\" />\n            <e p=\"OrderController.cs\" t=\"Include\" />\n          </e>\n          <e p=\"Player\" t=\"Include\">\n            <e p=\"Mover.cs\" t=\"Include\" />\n            <e p=\"PlayerController.cs\" t=\"Include\" />\n            <e p=\"PlayerInteractor.cs\" t=\"Include\" />\n          </e>\n          <e p=\"Room.cs\" t=\"Include\" />\n          <e p=\"Storage.cs\" t=\"Include\" />\n        </e>\n        <e p=\"TextMesh Pro\" t=\"Include\">\n          <e p=\"Resources\" t=\"Include\">\n            <e p=\"LineBreaking Following Characters.txt\" t=\"Include\" />\n            <e p=\"LineBreaking Leading Characters.txt\" t=\"Include\" />\n            <e p=\"Shaders\" t=\"Include\">\n              <e p=\"TMP_Bitmap-Mobile.shader\" t=\"Include\" />\n              <e p=\"TMP_Bitmap.shader\" t=\"Include\" />\n              <e p=\"TMP_SDF Overlay.shader\" t=\"Include\" />\n              <e p=\"TMP_SDF-Mobile Masking.shader\" t=\"Include\" />\n              <e p=\"TMP_SDF-Mobile Overlay.shader\" t=\"Include\" />\n              <e p=\"TMP_SDF-Mobile.shader\" t=\"Include\" />\n              <e p=\"TMP_SDF-Surface-Mobile.shader\" t=\"Include\" />\n              <e p=\"TMP_SDF-Surface.shader\" t=\"Include\" />\n              <e p=\"TMP_SDF.shader\" t=\"Include\" />\n              <e p=\"TMP_Sprite.shader\" t=\"Include\" />\n              <e p=\"TMPro.cginc\" t=\"Include\" />\n              <e p=\"TMPro_Properties.cginc\" t=\"Include\" />\n              <e p=\"TMPro_Surface.cginc\" t=\"Include\" />\n            </e>\n          </e>\n          <e p=\"Sprites\" t=\"Include\">\n            <e p=\"EmojiOne Attribution.txt\" t=\"Include\" />\n          </e>\n        </e>\n      </e>\n      <e p=\"LD41Jam-Unity.sln\" t=\"IncludeFlat\" />\n      <e p=\"Library\" t=\"ExcludeRecursive\" />\n      <e p=\"obj\" t=\"ExcludeRecursive\" />\n      <e p=\"packages\" t=\"ExcludeRecursive\" />\n      <e p=\"Temp\" t=\"ExcludeRecursive\">\n        <e p=\"bin\" t=\"ExcludeRecursive\" />\n      </e>\n    </e>\n    <e p=\"C:\\Users\\Sozo\\.Rider2018.1\\system\\resharper-host\\local\\Transient\\ReSharperHost\\v12\\SolutionCaches\\_LD41Jam-Unity.-1361481866.00\" t=\"ExcludeRecursive\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/.idea.LD41Jam-Unity/.idea/contentModel.xml	(revision d28e531d1e441d2d44ec437953920e9b001fb9c6)
++++ .idea/.idea.LD41Jam-Unity/.idea/contentModel.xml	(date 1525193837442)
+@@ -42,6 +42,14 @@
+             <e p="RecipeManager.cs" t="Include" />
+           </e>
+         </e>
++        <e p="ScriptableObjects" t="Include">
++          <e p="ArmorScriptable.cs" t="Include" />
++          <e p="EquipmentScriptable.cs" t="Include" />
++          <e p="Item.cs" t="Include" />
++          <e p="MaterialScriptable.cs" t="Include" />
++          <e p="RecipeScriptable.cs" t="Include" />
++          <e p="WeaponScriptable.cs" t="Include" />
++        </e>
+         <e p="Scripts" t="Include">
+           <e p="Camera" t="Include">
+             <e p="CameraController.cs" t="Include" />
+Index: Assets/Crafting/Silk.asset
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Assets/Crafting/Silk.asset	(date 1525194093167)
++++ Assets/Crafting/Silk.asset	(date 1525194093167)
+@@ -0,0 +1,15 @@
++%YAML 1.1
++%TAG !u! tag:unity3d.com,2011:
++--- !u!114 &11400000
++MonoBehaviour:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInternal: {fileID: 0}
++  m_GameObject: {fileID: 0}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: 11500000, guid: f8c8216712ce4a4f958448bc6174d7f1, type: 3}
++  m_Name: Silk
++  m_EditorClassIdentifier: 
++  ItemName: Silk
++  Artwork: {fileID: 0}
+Index: Assets/Crafting/Copper.asset
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Assets/Crafting/Copper.asset	(date 1525194069393)
++++ Assets/Crafting/Copper.asset	(date 1525194069393)
+@@ -0,0 +1,15 @@
++%YAML 1.1
++%TAG !u! tag:unity3d.com,2011:
++--- !u!114 &11400000
++MonoBehaviour:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInternal: {fileID: 0}
++  m_GameObject: {fileID: 0}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: 11500000, guid: f8c8216712ce4a4f958448bc6174d7f1, type: 3}
++  m_Name: Copper
++  m_EditorClassIdentifier: 
++  ItemName: Copper
++  Artwork: {fileID: 0}
+Index: Assets/ScriptableObjects/EquipmentScriptable.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Assets/ScriptableObjects/EquipmentScriptable.cs	(date 1525193648900)
++++ Assets/ScriptableObjects/EquipmentScriptable.cs	(date 1525193648900)
+@@ -0,0 +1,4 @@
++public class EquipmentScriptable : Item
++{
++    public Slot Slot;
++}
+Index: Assets/Crafting/Wool.asset
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Assets/Crafting/Wool.asset	(date 1525194088255)
++++ Assets/Crafting/Wool.asset	(date 1525194088255)
+@@ -0,0 +1,15 @@
++%YAML 1.1
++%TAG !u! tag:unity3d.com,2011:
++--- !u!114 &11400000
++MonoBehaviour:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInternal: {fileID: 0}
++  m_GameObject: {fileID: 0}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: 11500000, guid: f8c8216712ce4a4f958448bc6174d7f1, type: 3}
++  m_Name: Wool
++  m_EditorClassIdentifier: 
++  ItemName: Wool
++  Artwork: {fileID: 0}
+Index: Assets/ScriptableObjects/EquipmentScriptable.cs.meta
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Assets/ScriptableObjects/EquipmentScriptable.cs.meta	(date 1525193307425)
++++ Assets/ScriptableObjects/EquipmentScriptable.cs.meta	(date 1525193307425)
+@@ -0,0 +1,3 @@
++fileFormatVersion: 2
++guid: c9ac1f2588a0491e86239c8fd8ea60d9
++timeCreated: 1525193307
+\ No newline at end of file
+Index: Assets/Crafting/Silk.asset.meta
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Assets/Crafting/Silk.asset.meta	(date 1525194083498)
++++ Assets/Crafting/Silk.asset.meta	(date 1525194083498)
+@@ -0,0 +1,8 @@
++fileFormatVersion: 2
++guid: 133d2b7e333cac644baba5c8d184824a
++NativeFormatImporter:
++  externalObjects: {}
++  mainObjectFileID: 11400000
++  userData: 
++  assetBundleName: 
++  assetBundleVariant: 
+Index: Assets/Crafting/Wood.asset
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Assets/Crafting/Wood.asset	(date 1525194069382)
++++ Assets/Crafting/Wood.asset	(date 1525194069382)
+@@ -0,0 +1,15 @@
++%YAML 1.1
++%TAG !u! tag:unity3d.com,2011:
++--- !u!114 &11400000
++MonoBehaviour:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInternal: {fileID: 0}
++  m_GameObject: {fileID: 0}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: 11500000, guid: f8c8216712ce4a4f958448bc6174d7f1, type: 3}
++  m_Name: Wood
++  m_EditorClassIdentifier: 
++  ItemName: Wood
++  Artwork: {fileID: 0}
+Index: Assets/Crafting/Wood.asset.meta
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Assets/Crafting/Wood.asset.meta	(date 1525194034578)
++++ Assets/Crafting/Wood.asset.meta	(date 1525194034578)
+@@ -0,0 +1,8 @@
++fileFormatVersion: 2
++guid: c26e0b90db9b14b42a92ec69e00585f8
++NativeFormatImporter:
++  externalObjects: {}
++  mainObjectFileID: 11400000
++  userData: 
++  assetBundleName: 
++  assetBundleVariant: 
+Index: Assets/Crafting/Copper.asset.meta
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Assets/Crafting/Copper.asset.meta	(date 1525194054607)
++++ Assets/Crafting/Copper.asset.meta	(date 1525194054607)
+@@ -0,0 +1,8 @@
++fileFormatVersion: 2
++guid: b4459167a635cc540b91efb4aa0bd740
++NativeFormatImporter:
++  externalObjects: {}
++  mainObjectFileID: 11400000
++  userData: 
++  assetBundleName: 
++  assetBundleVariant: 
+Index: Assets/Resources/Fonts/ManaSpcFont.asset
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Assets/Resources/Fonts/ManaSpcFont.asset	(revision d28e531d1e441d2d44ec437953920e9b001fb9c6)
++++ Assets/Resources/Fonts/ManaSpcFont.asset	(date 1525194069438)
+@@ -9,21 +9,21 @@
+   m_Enabled: 1
+   m_EditorHideFlags: 0
+   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
+-  m_Name: manaspc
++  m_Name: ManaSpcFont
+   m_EditorClassIdentifier: 
+-  hashCode: 0
++  hashCode: 1410109712
+   material: {fileID: 21490328552967152}
+-  materialHashCode: 0
++  materialHashCode: 24215688
+   fontAssetType: 2
+   m_fontInfo:
+     Name: Manaspace
+     PointSize: 74
+-    Scale: 0
++    Scale: 1
+     CharacterCount: 209
+     LineHeight: 76
+     Baseline: 0
+     Ascender: 56
+-    CapHeight: 0
++    CapHeight: 56
+     Descender: -19
+     CenterLine: 0
+     SuperscriptOffset: 56
+@@ -33,7 +33,7 @@
+     UnderlineThickness: 1.734375
+     strikethrough: 13.454545
+     strikethroughThickness: 1.734375
+-    TabWidth: 0
++    TabWidth: 490
+     Padding: 5
+     AtlasWidth: 512
+     AtlasHeight: 512
+@@ -42,10 +42,10 @@
+   - id: 32
+     x: 5
+     y: 507
+-    width: 0
+-    height: 0
++    width: 49
++    height: 75
+     xOffset: 0
+-    yOffset: 0
++    yOffset: 56
+     xAdvance: 49
+     scale: 1
+   - id: 33
+Index: Assets/ScriptableObjects.meta
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Assets/ScriptableObjects.meta	(date 1525192172400)
++++ Assets/ScriptableObjects.meta	(date 1525192172400)
+@@ -0,0 +1,3 @@
++fileFormatVersion: 2
++guid: 4d4d13ec797b44f48dea2d6b707fbae8
++timeCreated: 1525192172
+\ No newline at end of file
+Index: Assets/ScriptableObjects/ArmorScriptable.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Assets/ScriptableObjects/ArmorScriptable.cs	(date 1525194019510)
++++ Assets/ScriptableObjects/ArmorScriptable.cs	(date 1525194019510)
+@@ -0,0 +1,6 @@
++using UnityEngine;
++
++[CreateAssetMenu(fileName = "Armor", menuName = "Equipment/Armor")]
++public class ArmorScriptable : EquipmentScriptable
++{
++}
+\ No newline at end of file
+Index: Assets/ScriptableObjects/ArmorScriptable.cs.meta
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Assets/ScriptableObjects/ArmorScriptable.cs.meta	(date 1525193666930)
++++ Assets/ScriptableObjects/ArmorScriptable.cs.meta	(date 1525193666930)
+@@ -0,0 +1,3 @@
++fileFormatVersion: 2
++guid: bd33a3ed65ae4beb9aea0f84a587507d
++timeCreated: 1525193666
+\ No newline at end of file
+Index: Assets/ScriptableObjects/Item.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Assets/ScriptableObjects/Item.cs	(date 1525193078536)
++++ Assets/ScriptableObjects/Item.cs	(date 1525193078536)
+@@ -0,0 +1,8 @@
++using UnityEngine;
++
++public class Item : ScriptableObject
++{
++    public string ItemName;
++
++    public Sprite Artwork;
++}
+Index: Assets/ScriptableObjects/Item.cs.meta
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Assets/ScriptableObjects/Item.cs.meta	(date 1525192201197)
++++ Assets/ScriptableObjects/Item.cs.meta	(date 1525192201197)
+@@ -0,0 +1,11 @@
++fileFormatVersion: 2
++guid: 06b044c0f856fbf40be6f4043e9d733a
++MonoImporter:
++  externalObjects: {}
++  serializedVersion: 2
++  defaultReferences: []
++  executionOrder: 0
++  icon: {instanceID: 0}
++  userData: 
++  assetBundleName: 
++  assetBundleVariant: 

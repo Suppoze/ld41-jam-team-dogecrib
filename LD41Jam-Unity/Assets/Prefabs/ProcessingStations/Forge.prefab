@@ -25,8 +25,6 @@ GameObject:
   - component: {fileID: 114834876043791420}
   - component: {fileID: 114597741924391190}
   - component: {fileID: 114480415170491398}
-  - component: {fileID: 114306831895956764}
-  - component: {fileID: 114613510234837436}
   - component: {fileID: 114213928685612438}
   m_Layer: 10
   m_Name: Forge
@@ -84,17 +82,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b85e8c4ded07f6346b25bbda323113f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114306831895956764
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1133107555521114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a0fa4bc86919824187797f584673391, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114380810657340806
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -133,17 +120,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Forge
   Processor: {fileID: 11400000, guid: d1ff7dc4266ef68468eebd3bfd9be0a2, type: 2}
---- !u!114 &114613510234837436
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1133107555521114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d32078f4101496c4aa91fcd76ec3eb58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114834876043791420
 MonoBehaviour:
   m_ObjectHideFlags: 1
